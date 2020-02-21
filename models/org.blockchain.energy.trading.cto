@@ -1,42 +1,65 @@
-/*
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 /**
- * Write your model definitions here
+ * Decentalized energy trading network
  */
-
 namespace org.blockchain.energy.trading
 
-participant SampleParticipant identified by participantId {
-  o String participantId
-  o String firstName
-  o String lastName
+
+participant Resident identified by residentID {
+    o String residentID
+    o String firstName
+    o String lastName
+    --> Coins coins
+    --> Energy energy
+    --> Consumption consumption
 }
 
-asset SampleAsset identified by assetId {
-  o String assetId
-  --> SampleParticipant owner
-  o String value
+participant UtilityCompany identified by utilityID {
+    o String utilityID
+    o String name
+    --> Coins coins
+    --> Energy energy
 }
 
-transaction SampleTransaction {
-  --> SampleAsset asset
-  o String newValue
+enum OwnerEntity {
+  o Resident
+  o UtilityCompany
 }
 
-event SampleEvent {
-  --> SampleAsset asset
-  o String oldValue
-  o String newValue
+asset Coins identified by coinsID {
+    o String coinsID
+    o Double value
+    o String ownerID
+    o OwnerEntity ownerEntity
+    
+}
+
+asset Energy identified by energyID {
+    o String energyID
+    o String units default = "kWh"
+    o Double value
+    o String ownerID
+    o OwnerEntity ownerEntity
+} 
+
+asset Consumption identified by consumptionID {
+    o String consumptionID
+    o String units default = "kWh"
+    o Double value
+    o String ownerID
+    o OwnerEntity ownerEntity
+} 
+
+transaction EnergyToCoins {
+    o Double energyRate default = 1.0
+    o Double energyValue       
+    --> Coins coinsInc
+    --> Coins coinsDec
+    --> Energy energyInc
+    --> Energy energyDec
+}
+
+transaction EnergyToConsumption {
+    o Double energyValue   
+    --> Energy energyDec
+    --> Consumption consumptionInc
 }

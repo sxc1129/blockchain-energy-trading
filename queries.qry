@@ -1,0 +1,29 @@
+
+query selectResidents {
+  description: "Select all residents"
+  statement:
+      SELECT org.blockchain.energy.trading.Resident
+}
+
+query selectUtilityCompanies {
+  description: "Select all utility companies"
+  statement:
+      SELECT org.blockchain.energy.trading.UtilityCompany
+}
+
+query selectCoins {
+  description: "Select all coin assets"
+  statement:
+      SELECT org.blockchain.energy.trading.Coins
+}
+
+query selectEnergy {
+  description: "Select all energy assets"
+  statement:
+      SELECT org.blockchain.energy.trading.Energy
+}
+query selectConsumption {
+  description: "Select all consumption assets"
+  statement:
+      SELECT org.blockchain.energy.trading.Consumption
+}
