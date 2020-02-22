@@ -10,14 +10,14 @@ participant Resident identified by residentID {
     o String lastName
     --> Coins coins
     --> Energy energy
-    --> Consumption consumption
+    --> Consumption[] consumption
 }
 
 participant UtilityCompany identified by utilityID {
     o String utilityID
     o String name
     --> Coins coins
-    --> Energy energy
+    --> Energy[] energy
 }
 
 enum OwnerEntity {
@@ -25,16 +25,25 @@ enum OwnerEntity {
   o UtilityCompany
 }
 
+enum EnergySource {
+  o SolarEnergy
+  o WindFarm
+  o HydroPowerPlant
+  o CoalPowerPlant
+  o GasFiredPowerPlant
+}
+
 asset Coins identified by coinsID {
     o String coinsID
     o Double value
     o String ownerID
     o OwnerEntity ownerEntity
-    
 }
 
 asset Energy identified by energyID {
     o String energyID
+    o EnergySource energySource 
+    o String location
     o String units default = "kWh"
     o Double value
     o String ownerID
@@ -49,12 +58,12 @@ asset Consumption identified by consumptionID {
     o OwnerEntity ownerEntity
 } 
 
-transaction EnergyToCoins {
+transaction CoinsToConsumption {
     o Double energyRate default = 1.0
     o Double energyValue       
     --> Coins coinsInc
     --> Coins coinsDec
-    --> Energy energyInc
+    --> Consumption consumptionInc
     --> Energy energyDec
 }
 
