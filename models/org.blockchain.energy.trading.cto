@@ -72,3 +72,7 @@ transaction EnergyToConsumption {
     --> Energy energyDec
     --> Consumption consumptionInc
 }
+
+event EnergyUsageEvent {
+    o Double energyValue
+}
