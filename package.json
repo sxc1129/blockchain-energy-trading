@@ -3,7 +3,7 @@
     "composer": "^0.20.6"
   },
   "name": "blockchain-energy-trading",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Energy trading network for MSc project.",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/blockchain-energy-trading.bna",
