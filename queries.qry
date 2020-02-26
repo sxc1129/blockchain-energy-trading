@@ -11,6 +11,12 @@ query selectUtilityCompanies {
       SELECT org.blockchain.energy.trading.UtilityCompany
 }
 
+query selectGenerationCompanies {
+  description: "Select all generation companies"
+  statement:
+      SELECT org.blockchain.energy.trading.GenerationCompany
+}
+
 query selectCoins {
   description: "Select all coin assets"
   statement:
@@ -22,8 +28,15 @@ query selectEnergy {
   statement:
       SELECT org.blockchain.energy.trading.Energy
 }
+
 query selectConsumption {
   description: "Select all consumption assets"
   statement:
       SELECT org.blockchain.energy.trading.Consumption
+}
+
+query selectGeneration {
+  description: "Select all generation assets"
+  statement:
+      SELECT org.blockchain.energy.trading.Generation
 }

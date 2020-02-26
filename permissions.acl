@@ -13,7 +13,6 @@ rule ResidentAccessOwnRecord {
     action: ALLOW
 }
 
-
 //Residents to have read only access to other Residents
 rule ResidentReadAccessResidents {
     description: "Allow residents read access to other residents"
@@ -22,7 +21,6 @@ rule ResidentReadAccessResidents {
     resource: "org.blockchain.energy.trading.Resident"
     action: ALLOW
 }
-
 
 //Residents to have read only access to other Utility Companies
 rule ResidentReadAccessUtilityCompanies {
@@ -33,6 +31,14 @@ rule ResidentReadAccessUtilityCompanies {
     action: ALLOW
 }
 
+//Residents to have read only access to other Generation Companies
+rule ResidentReadAccessGenerationCompanies {
+    description: "Allow residents read access to other generation companies"
+    participant: "org.blockchain.energy.trading.Resident"
+    operation: READ
+    resource: "org.blockchain.energy.trading.GenerationCompany"
+    action: ALLOW
+}
 
 //Residents to have read access to all coins assets
 rule ResidentAccessCoinsRecord {
@@ -43,6 +49,14 @@ rule ResidentAccessCoinsRecord {
     action: ALLOW
 }
 
+//Residents to have read access to all generation assets
+rule ResidentAccessGenerationRecord {
+    description: "Allow residents read access to all generation assets"
+    participant: "org.blockchain.energy.trading.Resident"
+    operation: READ
+    resource: "org.blockchain.energy.trading.Generation"
+    action: ALLOW
+}
 
 //Residents to have read access to all energy assets
 rule ResidentAccessEnergyRecord {
@@ -63,6 +77,12 @@ rule ResidentAccessConsumptionRecord {
 }
 
 
+
+//-----------------------------------------------------------------------------------------------------------
+
+
+
+
 //Utility Companies to have access to their own account
 rule UtilityCompanyAccessOwnRecord {
     description: "Allow utilty company to access only their profile"
@@ -73,7 +93,6 @@ rule UtilityCompanyAccessOwnRecord {
     action: ALLOW
 }
 
-
 //Utility Companies to have read only access to other Utility Companies
 rule UtilityCompanyReadAccessUtilityCompanies {
     description: "Allow utility companies read access to other Utility Companies"
@@ -83,6 +102,14 @@ rule UtilityCompanyReadAccessUtilityCompanies {
     action: ALLOW
 }
 
+//Utility Companies to have read only access to other Generation Companies
+rule UtilityCompanyReadAccessGenerationCompanies {
+    description: "Allow utility companies read access to other Generation Companies"
+    participant: "org.blockchain.energy.trading.UtilityCompany"
+    operation: READ
+    resource: "org.blockchain.energy.trading.GenerationCompany"
+    action: ALLOW
+}
 
 //Utility Companies to have read only access to other Residents
 rule UtilityCompanyReadAccessResidents {
@@ -93,7 +120,6 @@ rule UtilityCompanyReadAccessResidents {
     action: ALLOW
 }
 
-
 //Utility Companies to have read access to all coins assets
 rule UtilityCompanyAccessCoinsRecord {
     description: "Allow utility companies read access to all coins assets"
@@ -103,6 +129,14 @@ rule UtilityCompanyAccessCoinsRecord {
     action: ALLOW
 }
 
+//Utility Companies to have read access to all generation assets
+rule UtilityCompanyAccessGenerationRecord {
+    description: "Allow utility companies read access to all generation assets"
+    participant: "org.blockchain.energy.trading.UtilityCompany"
+    operation: READ
+    resource: "org.blockchain.energy.trading.Generation"
+    action: ALLOW
+}
 
 //Utility Companies to have read access to all energy assets
 rule UtilityCompanyAccessEnergyRecord {
@@ -113,7 +147,6 @@ rule UtilityCompanyAccessEnergyRecord {
     action: ALLOW
 }
 
-
 //Utility Companies to have read access to all consumption assets
 rule UtilityCompanyAccessConsumptionRecord {
     description: "Allow utility companies read access to all consumption assets"
@@ -122,6 +155,92 @@ rule UtilityCompanyAccessConsumptionRecord {
     resource: "org.blockchain.energy.trading.Consumption"
     action: ALLOW
 }
+
+
+
+//-----------------------------------------------------------------------------------------------------------
+
+
+
+
+//Generation Companies to have access to their own account
+rule GenerationCompanyAccessOwnRecord {
+    description: "Allow generation company to access only their profile"
+    participant(p): "org.blockchain.energy.trading.GenerationCompany"
+    operation: READ, UPDATE, DELETE
+    resource(r): "org.blockchain.energy.trading.GenerationCompany"
+    condition: (r.getIdentifier() === p.getIdentifier())
+    action: ALLOW
+}
+
+//Generation Companies to have read only access to other Utility Companies
+rule GenerationCompanyReadAccessUtilityCompanies {
+    description: "Allow generation companies read access to other Utility Companies"
+    participant: "org.blockchain.energy.trading.GenerationCompany"
+    operation: READ
+    resource: "org.blockchain.energy.trading.UtilityCompany"
+    action: ALLOW
+}
+
+//Generation Companies to have read only access to other Generation Companies
+rule GenerationCompanyReadAccessGenerationCompanies {
+    description: "Allow Generation companies read access to other Generation Companies"
+    participant: "org.blockchain.energy.trading.GenerationCompany"
+    operation: READ
+    resource: "org.blockchain.energy.trading.GenerationCompany"
+    action: ALLOW
+}
+
+//Generation Companies to have read only access to other Residents
+rule GenerationCompanyReadAccessResidents {
+    description: "Allow generation companies read access to other Residents"
+    participant: "org.blockchain.energy.trading.GenerationCompany"
+    operation: READ
+    resource: "org.blockchain.energy.trading.Resident"
+    action: ALLOW
+}
+
+//Generation Companies to have read access to all coins assets
+rule GenerationCompanyAccessCoinsRecord {
+    description: "Allow generation companies read access to all coins assets"
+    participant: "org.blockchain.energy.trading.GenerationCompany"
+    operation: READ
+    resource: "org.blockchain.energy.trading.Coins"
+    action: ALLOW
+}
+
+//Generation Companies to have read access to all generation assets
+rule GenerationCompanyAccessGenerationRecord {
+    description: "Allow generation companies read access to all generation assets"
+    participant: "org.blockchain.energy.trading.GenerationCompany"
+    operation: READ
+    resource: "org.blockchain.energy.trading.Generation"
+    action: ALLOW
+}
+
+//Generation Companies to have read access to all energy assets
+rule GenerationCompanyAccessEnergyRecord {
+    description: "Allow generation companies read access to all energy assets"
+    participant: "org.blockchain.energy.trading.GenerationCompany"
+    operation: READ
+    resource: "org.blockchain.energy.trading.Energy"
+    action: ALLOW
+}
+
+//Generation Companies to have read access to all consumption assets
+rule GenerationCompanyAccessConsumptionRecord {
+    description: "Allow generation companies read access to all consumption assets"
+    participant: "org.blockchain.energy.trading.GenerationCompany"
+    operation: READ
+    resource: "org.blockchain.energy.trading.Consumption"
+    action: ALLOW
+}
+
+
+
+//-----------------------------------------------------------------------------------------------------------
+
+
 
 
 rule SystemACL {

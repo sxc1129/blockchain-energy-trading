@@ -9,7 +9,8 @@ participant Resident identified by residentID {
     o String firstName
     o String lastName
     --> Coins coins
-    --> Energy energy
+    --> Generation[] generation
+    --> Energy[] energy
     --> Consumption[] consumption
 }
 
@@ -20,17 +21,26 @@ participant UtilityCompany identified by utilityID {
     --> Energy[] energy
 }
 
+participant GenerationCompany identified by companyID {
+    o String companyID
+    o String name
+    --> Coins coins
+    --> Generation[] generation
+    --> Energy[] energy
+}
+
 enum OwnerEntity {
   o Resident
   o UtilityCompany
+  o GenerationCompany
 }
 
 enum EnergySource {
-  o SolarEnergy
-  o WindFarm
-  o HydroPowerPlant
-  o CoalPowerPlant
-  o GasFiredPowerPlant
+  o Solar
+  o Wind
+  o Hydro
+  o Coal
+  o GasFired
 }
 
 asset Coins identified by coinsID {
@@ -40,35 +50,55 @@ asset Coins identified by coinsID {
     o OwnerEntity ownerEntity
 }
 
+asset Consumption identified by consumptionID {
+    o String consumptionID
+    o EnergySource energySource 
+    o String latitude
+    o String longitude
+    o String units default = "kWh"
+    o Double value
+    o String ownerID
+    o OwnerEntity ownerEntity
+} 
+
 asset Energy identified by energyID {
     o String energyID
     o EnergySource energySource 
-    o String location
+    o String latitude
+    o String longitude
     o String units default = "kWh"
     o Double value
     o String ownerID
     o OwnerEntity ownerEntity
 } 
 
-asset Consumption identified by consumptionID {
-    o String consumptionID
-    o String units default = "kWh"
+asset Generation identified by generationID {
+    o String generationID
+    o EnergySource energySource 
+    o String latitude
+    o String longitude
+    o String units default = "kW"
     o Double value
     o String ownerID
     o OwnerEntity ownerEntity
 } 
 
-transaction CoinsToConsumption {
+transaction CoinsToEnergy {
     o Double energyRate default = 1.0
     o Double energyValue       
     --> Coins coinsInc
     --> Coins coinsDec
-    --> Consumption consumptionInc
+    --> Energy energyInc
     --> Energy energyDec
 }
 
 transaction EnergyToConsumption {
     o Double energyValue   
-    --> Energy energyDec
     --> Consumption consumptionInc
+    --> Energy energyDec
+}
+
+transaction GenerationToEnergy {
+    o Double energyValue   
+    --> Energy energyInc
 }
