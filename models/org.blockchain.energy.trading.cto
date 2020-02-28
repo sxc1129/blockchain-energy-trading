@@ -77,7 +77,7 @@ asset Generation identified by generationID {
     o EnergySource energySource 
     o String latitude
     o String longitude
-    o String units default = "kW"
+    o String units default = "kWh"
     o Double value
     o String ownerID
     o OwnerEntity ownerEntity
@@ -101,4 +101,5 @@ transaction EnergyToConsumption {
 transaction GenerationToEnergy {
     o Double energyValue   
     --> Energy energyInc
+    --> Generation generationInc
 }
