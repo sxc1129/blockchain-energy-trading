@@ -19,16 +19,5 @@ composer card import --file networkadmin.card
 
 composer network ping --card admin@blockchain-energy-trading
 
-composer-rest-server -c admin@blockchain-energy-trading -n never -u true -d - -w true
+composer-rest-server -c admin@blockchain-energy-trading -n never -u true -w true
 
-
-
-
-
-cd angular-app/
-
-open -a Google\ Chrome "http://localhost:4200/"
-
-npm install
-
-npm start
