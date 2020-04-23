@@ -1,11 +1,3 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Mar 25 22:37:49 2020
-
-@author: sanyaponc.
-"""
-
 import csv , requests , json , time 
 
 with open('load.csv', 'r') as csv_file:

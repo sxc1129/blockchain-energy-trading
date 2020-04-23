@@ -1,6 +1,6 @@
 cd Project
 
-cd Decentralized-Energy-Composer  
+cd blockchain-energy-trading  
 
 cd fabric-dev-servers/
 
