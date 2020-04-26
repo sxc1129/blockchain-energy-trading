@@ -7,7 +7,7 @@ def create_coin(coin):
         payload = {
             "$class": "org.blockchain.energy.trading.Coins",
             "coinsID": c,
-            "value": 2000,
+            "value": 3000,
             "ownerID": "string",
             "ownerEntity": "Resident"
             }
@@ -26,7 +26,7 @@ def create_energy(energy):
             "latitude": "xx.xxxx",
             "longitude": "yy.yyyy",
             "units": "kWh",
-            "value": 2000,
+            "value": 3000,
             "ownerID": "string",
             "ownerEntity": "Resident"
             }
@@ -60,16 +60,16 @@ def trade():
             headers = {'content-type':'application/json'}    
             response = requests.post(url, data = json.dumps(payload), headers=headers)  
             print(response.text,'\n'),
-            time.sleep(3605)
+            time.sleep(3604)
 
 
-
-coin = ('coin_R1','coin_U1')      
-create_coin(coin)
+#coin = ('coin_R1','coin_U1')      
+#create_coin(coin)
         
-energy = ('energy_R1','energy_U1')
-create_energy(energy)
+#energy = ('energy_R1','energy_U1')
+#create_energy(energy)
 
 trade()
+
 
     
