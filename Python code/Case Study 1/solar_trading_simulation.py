@@ -47,6 +47,7 @@ def trade():
             y = float(rowS[1])
         
             deficit = x-y
+            print(deficit)
             url = 'http://localhost:3000/api/CoinsToEnergy'    
             payload = {
                 "$class": "org.blockchain.energy.trading.CoinsToEnergy",
@@ -60,7 +61,7 @@ def trade():
             headers = {'content-type':'application/json'}    
             response = requests.post(url, data = json.dumps(payload), headers=headers)  
             print(response.text,'\n'),
-            time.sleep(3604)
+            time.sleep(0.1)
 
 
 #coin = ('coin_R1','coin_U1')      
