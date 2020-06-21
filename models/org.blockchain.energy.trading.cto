@@ -41,6 +41,7 @@ enum EnergySource {
   o Hydro
   o Coal
   o GasFired
+  o Diesel
 }
 
 asset Coins identified by coinsID {
