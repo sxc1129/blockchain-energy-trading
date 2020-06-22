@@ -24,7 +24,7 @@ def trade():
             headers = {'content-type':'application/json'}    
             response = requests.post(url, data = json.dumps(payload), headers=headers)  
             print(response.text,'\n'),
-            time.sleep(1)
+            time.sleep(3601)
 
 
 trade()
