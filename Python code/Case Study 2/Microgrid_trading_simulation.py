@@ -14,7 +14,7 @@ def trade():
             url = 'http://localhost:3000/api/CoinsToEnergy'    
             payload = {
                 "$class": "org.blockchain.energy.trading.CoinsToEnergy",
-               "energyRate": "1.0",
+                "energyRate": "1.0",
                 "energyValue": deficit,
                 "coinsInc": "org.blockchain.energy.trading.Coins#coin_U1",
                 "coinsDec": "org.blockchain.energy.trading.Coins#coin_R1",

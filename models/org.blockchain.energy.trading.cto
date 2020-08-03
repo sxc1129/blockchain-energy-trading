@@ -9,16 +9,16 @@ participant Resident identified by residentID {
     o String firstName
     o String lastName
     --> Coins coins
-    --> Generation[] generation
-    --> Energy[] energy
-    --> Consumption[] consumption
+    --> Generation generation
+    --> Energy energy
+    --> Consumption consumption
 }
 
 participant UtilityCompany identified by utilityID {
     o String utilityID
     o String name
     --> Coins coins
-    --> Energy[] energy
+    --> Energy energy
 }
 
 participant GenerationCompany identified by companyID {
