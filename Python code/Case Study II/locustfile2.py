@@ -7,7 +7,7 @@ class MyUser(HttpUser):
 
     @task(1)
     def post_trade(self):
-        self.total_assets = 100
+        self.total_assets = 400
         is_found = False
         while not is_found:
             asset1 = random.randint(1, self.total_assets)
@@ -34,7 +34,3 @@ class MyUser(HttpUser):
                 self.trading_pool.remove(asset2)
 
  
-   
-   
-        
-    

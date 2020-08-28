@@ -1,7 +1,7 @@
 import requests , json , time 
 
 coin = 1
-while coin <= 100:
+while coin <= 400:
     url = 'http://localhost:3000/api/Coins'
     payload = {
         "$class": "org.blockchain.energy.trading.Coins",
@@ -17,7 +17,7 @@ while coin <= 100:
     print(response)
     
 energy = 1
-while energy <= 100:
+while energy <= 400:
     url = 'http://localhost:3000/api/Energy'
     payload = {
         "$class":"org.blockchain.energy.trading.Energy",
