@@ -86,7 +86,7 @@ npm start
 Angular-app will run at: `http://localhost:4200` 
 
 ## 6. Stop the Fabric
-Change the directory to fabric-dev-servers, then stop and tear down Fabric
+After finishing, the running network has to be stopped and teared down. Change the directory to fabric-dev-servers, then stop and tear down Fabric
 ```
 cd ../
 cd fabric-dev-servers/
